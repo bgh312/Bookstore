@@ -1,6 +1,7 @@
 package hh.swd20.bookstore.domain;
 
 //  title, author, year, isbn, price 
+//
 
 public class Book {
 	private String title;
