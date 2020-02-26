@@ -1,30 +1,48 @@
 package hh.swd20.bookstore.domain;
 
-//  title, author, year, isbn, price 
-//
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+//@Table(name = "kirja")
 public class Book {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id; // new attribute id
 	private String title;
 	private String author;
-	private String year;
-	private String isbn;
-	private String price;
+	private int year;
+	private int isbn;
+	private double price;
 	
 	public Book() {
+		this.id = null;
 		this.title = null;
 		this.author = null;
-		this.year = null;
-		this.isbn = null;
-		this.price = null;
+		this.year = 0;
+		this.isbn = 0;
+		this.price = 0.00;
 	}
 	
-	public Book(String title, String author, String year, String isbn, String price ) {
+	public Book(String title, String author, int year, int isbn, double price ) {
 		this.title = title;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
 }
+	
+	public Book(Long id, String title, String author, int year, int isbn, double price) {
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.year = year;
+		this.isbn = isbn;
+		this.price = price;
+	}
 
 	public String getTitle() {
 		return title;
@@ -42,35 +60,36 @@ public class Book {
 		this.author = author;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 
-	public String getIsbn() {
+	public int getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(String isbn) {
+	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+				+ ", price=" + price + "]";
 	}
+	
 }
 
 	
